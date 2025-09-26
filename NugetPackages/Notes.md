@@ -1,0 +1,1 @@
+- When adding a service reference in VS 2022, it's useful to disable private Nuget sources before adding the reference, and enabling them afterwards.
