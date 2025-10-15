@@ -6,36 +6,36 @@
 -  There are 2 ways to implement Exception Handling in ASP.NET Core:
     1. Using Middleware
     2. Using IExceptionHandler
-       ´´´
-       internal sealed class GlobalExceptionHandler : IExceptionHandler
-        {
-            private readonly ILogger<GlobalExceptionHandler> _logger;
-        
-            public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
-            {
-                _logger = logger;
-            }
-        
-            public async ValueTask<bool> TryHandleAsync(
-                HttpContext httpContext,
-                Exception exception,
-                CancellationToken cancellationToken)
-            {
-                _logger.LogError(
-                    exception, "Exception occurred: {Message}", exception.Message);
-        
-                var problemDetails = new ProblemDetails
+       
+           internal sealed class GlobalExceptionHandler : IExceptionHandler
+           {
+                private readonly ILogger<GlobalExceptionHandler> _logger;
+            
+                public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
                 {
-                    Status = StatusCodes.Status500InternalServerError,
-                    Title = "Server error"
-                };
-        
-                httpContext.Response.StatusCode = problemDetails.Status.Value;
-        
-                await httpContext.Response
-                    .WriteAsJsonAsync(problemDetails, cancellationToken);
-        
-                return true;
-            }
-       }
-    ´´´
+                    _logger = logger;
+                }
+            
+                public async ValueTask<bool> TryHandleAsync(
+                    HttpContext httpContext,
+                    Exception exception,
+                    CancellationToken cancellationToken)
+                {
+                    _logger.LogError(
+                        exception, "Exception occurred: {Message}", exception.Message);
+            
+                    var problemDetails = new ProblemDetails
+                    {
+                        Status = StatusCodes.Status500InternalServerError,
+                        Title = "Server error"
+                    };
+            
+                    httpContext.Response.StatusCode = problemDetails.Status.Value;
+            
+                    await httpContext.Response
+                        .WriteAsJsonAsync(problemDetails, cancellationToken);
+            
+                    return true;
+                }
+           }
+    
