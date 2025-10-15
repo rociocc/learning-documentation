@@ -1,4 +1,4 @@
-## Resources:
+### Resources:
 - https://www.milanjovanovic.tech/blog/global-error-handling-in-aspnetcore-8
 
 # Exception Handling
