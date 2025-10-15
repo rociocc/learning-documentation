@@ -38,4 +38,16 @@
                     return true;
                 }
            }
-    
+
+       - Add an IExceptionHandler implementation to the ASP.NET Core Request pipeline:
+         1. Register the IExceptionHandler service with dependency injection
+
+                // call the AddExceptionHandler method to register the GlobalExceptionHandler as a service
+                builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+                // calling AddProblemDetails to generate a Problem Details response for common exceptions.
+                builder.Services.AddProblemDetails();
+            
+         3. Register the ExceptionHandlerMiddleware with the request pipeline
+
+                // call UseExceptionHandler to add the ExceptionHandlerMiddleware to the request pipeline
+                app.UseExceptionHandler();
