@@ -8,6 +8,12 @@
 - https://learn.microsoft.com/en-us/archive/msdn-magazine/2018/january/csharp-all-about-span-exploring-a-new-net-mainstay
 - Deep .NET YT Channel: https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX8eqDkSw4hH9cSehrGgdr1
 
+## SW Architecture
+
+- https://github.com/mehdihadeli/awesome-software-architecture
+- https://github.com/kgrzybek/modular-monolith-with-ddd
+  
+
 ## Network programming with C#
 
 - https://csharp-networking.com/
